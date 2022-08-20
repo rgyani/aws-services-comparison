@@ -48,8 +48,7 @@ and deny rules that may be divergent, depending if traffic is inbound or outboun
 | Operates at the subnet level | Operates at the instance level |
 | Supports allow rules and deny rules | Supports allow rules only |
 | Is stateless: Return traffic must be explicitly allowed by rules | Is stateful: Return traffic is automatically allowed, regardless of any rules |
-| We process **rules in order, starting with the lowest numbered
-rule**, when deciding whether to allow traffic | We evaluate all rules before deciding whether to allow traffic|
+| We process **rules in order, starting with the lowest numbered rule**, when deciding whether to allow traffic | We evaluate all rules before deciding whether to allow traffic|
 | Automatically applies to all instances in the subnets that it's associated with (therefore, it provides an additional layer of defense if the security group rules are too permissive) | Applies to an instance only if someone specifies the security group when launching the instance, or associates the security group with the instance later on|
 
 * Because NACLs are stateless, you must also ensure that outbound rules exist alongside the inbound rules so that
