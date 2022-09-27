@@ -590,3 +590,26 @@ instance compared to ECS.
 </td>
 </tr>
 </table>
+
+# ECS vs Batch
+
+
+* Use Batch when your primary focus will be to run "jobs." Batch used ECS in background to spin up/down instances 
+* Use ECS when you want to run "services" (nodes behind a LB, or persistent worker nodes pulling work).
+
+Think of Batch as a **purpose built batch scheduler on top of ECS**. Things it does that you would have to implement yourself
+ * instance selection and management
+ * job queues
+ * job dependencies (essentially a job graph)
+ * array jobs
+
+
+# Redshift vs DynamoDB
+
+| Redshift | DynamoDB |
+|---|---|
+|Amazon Redshift is a data warehouse offered as a service| DynamoDB is a key-value and document database.|
+| OLAP use cases | OLTP use cases |
+|Redshift has a PostgreSQL compatible querying layer that can handle very complex queries to return lightning-fast results even in case of scans spanning over millions of rows. Redshift allows its customers to choose from instances optimized for performance and storage and offers a pricing strategy combining both storage and compute resources. | Amazon provides a proprietary query language that can retrieve rows based on the primary key and other key-value pairs in the data. It has the capacity to autoscale by dynamically changing the provisioned capacity without affecting the query loads. This coupled with the pricing strategy based on the number of requests and occupied storage makes it a very economical option for NoSQL use cases.|
+|Redshift architecture involves a cluster of nodes with one of them being designated as a leader node. The leader node handles all query optimization, client communication, execution plan creation and task assignment to individual nodes|Architecturally, DynamoDB is organized into nodes and slices of data with each node handling a range of primary keys. When a request comes, the capacity of only the node with that particular primary key range gets utilized which makes it very suitable for workloads distributed uniformly across primary keys|
+|Data loading to Redshift is done by first copying the data to S3 and then using the COPY command to load it into tables.|DynamoDB also can load data in the form of JSON from S3. AWS data pipeline offers built-in templates for loading data to DynamoDB as well. AWS Data migration service is another option that can be considered. |
