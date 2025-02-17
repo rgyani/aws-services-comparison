@@ -117,6 +117,12 @@ the traffic flows via a corporate network and VPN/Direct Connect).
 
 A subnet is deemed to be a Public Subnet if it has a Route Table that directs traffic to the Internet Gateway.
 
+# Inter-VPC Communication
+- **VPC Lattice** – Used for managing communication between services running in different VPCs or accounts. It provides service discovery, authentication, and traffic management without needing complex networking setups.
+- **VPC Peering** – Directly connects two VPCs for private communication. No additional service layer, just raw network connectivity.
+- **Transit Gateway** – Connects multiple VPCs and on-premises networks in a hub-and-spoke model, allowing scalable inter-VPC routing.
+
+
 ## ELB vs Route 53
 
 1. ELB distributes traffic among Multiple Availability Zone but not to multiple Regions. Route53 can distribute traffic
