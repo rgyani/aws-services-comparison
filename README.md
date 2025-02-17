@@ -117,6 +117,17 @@ the traffic flows via a corporate network and VPN/Direct Connect).
 
 A subnet is deemed to be a Public Subnet if it has a Route Table that directs traffic to the Internet Gateway.
 
+
+| Feature | NAT Gateway | Internet Gateway |
+|---|---|---|
+| Purpose | Allows private instances to access the internet while keeping them private | Provides internet access to public instances |
+| Traffic Flow | Outbound-only (private → internet) | Bidirectional (inbound & outbound) |
+| Public IP? |	Uses Elastic IP (EIP)	| Associates public IPs with instances |
+| Instance Type |	Private instances (no public IP) |	Public instances (with public IP) |
+| Security | Protects instances from inbound traffic |	Direct exposure to internet |
+| Use Case |	Private instances accessing the internet for updates, API calls, etc.	| Public-facing servers (web apps, APIs, etc.)|
+
+
 # Inter-VPC Communication
 - **VPC Lattice** – Used for managing communication between services running in different VPCs or accounts. It provides service discovery, authentication, and traffic management without needing complex networking setups.
 - **VPC Peering** – Directly connects two VPCs for private communication. No additional service layer, just raw network connectivity.
