@@ -196,8 +196,7 @@ Disaster recovery in AWS always looks to ensure standby copies of resources are 
 area. This way, if a disaster (natural disaster, political conflict, etc.) ever struck where your original resources
 are, the copies would be unaffected.
 
-* When you provision a Multi-AZ DB Instance, Amazon RDS automatically creates a primary DB instance and **
-  synchronously** replicates the data to a standby instance in a different Availability Zone (AZ). Each AZ runs on its
+* When you provision a Multi-AZ DB Instance, Amazon RDS automatically creates a primary DB instance and **synchronously** replicates the data to a standby instance in a different Availability Zone (AZ). Each AZ runs on its
   own physically distinct, independent infrastructure, and is engineered to be highly reliable.
 * With a Multi-AZ configuration, EC2 connects to its RDS data store using a DNS address masked as a connection string.
   If the primary DB fails, Multi-AZ is smart enough to detect that failure and automatically update the DNS address to
